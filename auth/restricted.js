@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const Users = require('../users/users-model.js')
 
 function restricted(req,res,next){
-    const {username,password} = req.body
+    const {username,password} = req.headers
 
     if(username && password){
         Users.findBy({username})

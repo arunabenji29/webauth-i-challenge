@@ -1,9 +1,11 @@
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
-const bcrypt = require('bcryptjs')
+
 const UserRouter = require('./users/userRouter.js')
-const server = express()
+const AuthRouter = require('./auth/auth-router.js')
+
+const server = express();
 
 server.use(helmet());
 server.use(express.json());
@@ -14,6 +16,7 @@ server.get('/',(req,res) => {
 });
 
 server.use('/api/users',UserRouter)
+server.use('/api/auth',AuthRouter)
 
 const port = process.env.PORT || 4000
 
