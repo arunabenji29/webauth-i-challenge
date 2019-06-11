@@ -2,7 +2,7 @@ const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
 const session = require('express-session')
-const KnexSessionStore = require('connect-session-knex')
+const KnexSessionStore = require('connect-session-knex')(session)
 const UserRouter = require('./users/userRouter.js')
 const AuthRouter = require('./auth/auth-router.js')
 
@@ -16,7 +16,7 @@ const sessionConfig = {
     cookie:{
         maxAge: 1000 * 60 * 15,
         secure:false,
-        httpOnly:true
+        httpOnly:true,
     },
     store: new KnexSessionStore({
         knex:require('./database/dbConfig.js'),

@@ -41,7 +41,7 @@ router.post('/login', (req, res) => {
       });
   });
 
-  router.delete('/', (Req,res)=>{
+  router.delete('/logout', (req,res)=>{
     if(req.session){
       req.session.destroy();
     }
