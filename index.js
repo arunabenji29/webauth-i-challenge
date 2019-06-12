@@ -29,7 +29,12 @@ const sessionConfig = {
 
 server.use(helmet());
 server.use(express.json());
-server.use(cors());
+server.use(cors(
+    {
+    credentials:true,
+    origin:true,
+}
+));
 server.use(session(sessionConfig))
 
 server.get('/',(req,res) => {
